@@ -1,12 +1,14 @@
-scene.onOverlapTile(SpriteKind.Player, assets.tile`star`, function (sprite, location) {
-    info.changeScoreBy(1)
-})
+namespace SpriteKind {
+    export const star1 = SpriteKind.create()
+    export const star2 = SpriteKind.create()
+    export const star3 = SpriteKind.create()
+}
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     Tutorial()
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     Level_1()
-    pause(100)
+    pause(200)
 })
 function death () {
     sprites.destroyAllSpritesOfKind(SpriteKind.Text)
@@ -143,9 +145,6 @@ function Level_1 () {
     controller.moveSprite(mySprite, 50, 0)
     mySprite.setVelocity(20, 50)
     mySprite.ay = 40
-    Star_1 = sprites.create(assets.image`Star`, SpriteKind.Player)
-    Star_2 = sprites.create(assets.image`Star`, SpriteKind.Player)
-    Star_3 = sprites.create(assets.image`Star`, SpriteKind.Player)
     pause(200)
     mySprite.setVelocity(0, 50)
     tiles.setCurrentTilemap(tilemap`level2`)
@@ -159,7 +158,6 @@ function start () {
     color.Adafruit
     )
     scene.setBackgroundImage(assets.image`Baller`)
-    music.play(music.stringPlayable("G A B A B C5 A C5 ", 150), music.PlaybackMode.LoopingInBackground)
     effects.blizzard.startScreenEffect()
     textSprite = textsprite.create("BALLER")
     textSprite.setPosition(30, 55)
@@ -171,9 +169,6 @@ function start () {
     Level_1()
 }
 let textSprite: TextSprite = null
-let Star_3: Sprite = null
-let Star_2: Sprite = null
-let Star_1: Sprite = null
 let mySprite: Sprite = null
 let textSprite2: TextSprite = null
 start()
